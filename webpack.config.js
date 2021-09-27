@@ -19,6 +19,11 @@ module.exports = {
                 },
             },
             {
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/,
+            },        
+            {
                 test: /\.css$/i,
                 use: ["style-loader", "css-loader"],
             },
@@ -31,6 +36,9 @@ module.exports = {
                 use: ['@svgr/webpack'],
             },
         ]
+    },
+    resolve: {
+        extensions: ['.tsx', '.ts', '.js'],
     },
     plugins: [
         new HtmlWebpackPlugin({
