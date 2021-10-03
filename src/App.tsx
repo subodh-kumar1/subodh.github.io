@@ -7,7 +7,6 @@ import theme from "./themes/theme";
 const App = () => {
     return (
         <ThemeProvider theme={theme}>
-            <a href="https://github.com/subodh-kumar1/subodh.github.io">Code Here</a>
             <HomePage/>
         </ThemeProvider>
     )
