@@ -1,6 +1,6 @@
 import { ArrowLeftSharp, ArrowRightSharp } from "@mui/icons-material";
 import { Box, Button, Slide } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import DotIndicator from "../../atoms/DotIndicator/DotIndicator";
 import image1 from "../../../assets/carousal-images/image1.jpg";
 import image2 from "../../../assets/carousal-images/image2.jpg";
@@ -12,6 +12,8 @@ import image4 from "../../../assets/carousal-images/image4.jpg";
 export default function CustomCarousal() {
     const [index, setIndex] = useState(0);
     const [direction, setDirection] = useState<string | undefined>();
+    const containerRef = useRef(null);
+    
     const images = [
         image1,
         image2,
@@ -20,7 +22,7 @@ export default function CustomCarousal() {
     ]
     return (
         <React.Fragment>
-            <Box style={{position: 'relative'}}>
+            <Box style={{position: 'relative',}} ref={containerRef}>
                 <Box top="50%" left="16px" style={{position: 'absolute'}}>
                     <Button color="secondary" variant="contained" onClick={() => { setIndex((images.length + index - 1) % images.length); setDirection("right"); }}>
                         <ArrowLeftSharp/>
@@ -30,7 +32,7 @@ export default function CustomCarousal() {
                 {
                     images.map(
                         (item, i) => i == index && 
-                        <Slide direction={direction === "left" ? "left" : "right"} in={index === i}>
+                        <Slide direction={direction === "left" ? "left" : "right"} in={index === i} container={containerRef.current}>
                             <img width="100%" src={item} alt={'carousal'} />
                         </Slide>
                     )
