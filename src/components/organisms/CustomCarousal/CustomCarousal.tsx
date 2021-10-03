@@ -2,10 +2,6 @@ import { ArrowLeftSharp, ArrowRightSharp } from "@mui/icons-material";
 import { Box, Button, Slide } from "@mui/material";
 import React, { useState, useRef } from "react";
 import DotIndicator from "../../atoms/DotIndicator/DotIndicator";
-import image1 from "../../../assets/carousal-images/image1.jpg";
-import image2 from "../../../assets/carousal-images/image2.jpg";
-import image3 from "../../../assets/carousal-images/image3.jpeg";
-import image4 from "../../../assets/carousal-images/image4.jpg";
 
 
 
@@ -15,14 +11,14 @@ export default function CustomCarousal() {
     const containerRef = useRef(null);
     
     const images = [
-        image1,
-        image2,
-        image3,
-        image4,
+        "https://i.ibb.co/3fLD6dd/image1.jpg",
+        "https://i.ibb.co/DVrN8zQ/image2.jpg",
+        "https://i.ibb.co/grY2hbP/image3.jpg",
+        "https://i.ibb.co/DYsmhHF/image4.jpg",
     ]
     return (
         <React.Fragment>
-            <Box style={{position: 'relative',}} ref={containerRef}>
+            <Box style={{position: 'relative', }} ref={containerRef}>
                 <Box top="50%" left="16px" style={{position: 'absolute'}}>
                     <Button color="secondary" variant="contained" onClick={() => { setIndex((images.length + index - 1) % images.length); setDirection("right"); }}>
                         <ArrowLeftSharp/>
